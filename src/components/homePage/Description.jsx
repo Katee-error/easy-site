@@ -1,17 +1,42 @@
-import {Box, Button, Container, Flex, keyframes, Link, Text} from "@chakra-ui/react";
-import {motion} from "framer-motion";
+import {Box, Button, Container, extendTheme, Flex, keyframes, Link, Text} from "@chakra-ui/react";
+import {motion, useAnimation} from "framer-motion";
 import {useInView} from "react-intersection-observer";
-import React from "react";
+import React, {useEffect} from "react";
 
 const MotionBox = motion(Box);
 
 export const Description = () => {
+
     const {ref, inView} = useInView({
         triggerOnce: true, // Анимация запускается только один раз
         threshold: 0.4, // Процент видимой области, после которого запускается анимация
     });
 
     const MotionButton = motion(Button);
+
+    const buttonVariants = {
+        animate: {
+            scale: [1, 1.5, 1],
+            borderRadius: ["100px", "50px", "20px", "100px"],
+            background: [
+                "linear-gradient(132deg, #FC415A, #591BC5, #212335)",
+                "linear-gradient(132deg, #FFDEE9, #B5FFFC)",
+                "linear-gradient(132deg, #FC415A, #591BC5, #212335)",
+            ],
+            transition: {
+                duration: 4,
+                ease: "easeInOut",
+                repeat: Infinity,
+                repeatType: "mirror",
+            },
+        },
+    };
+
+    const controls = useAnimation();
+    useEffect(() => {
+        controls.start("animate");
+    }, [controls]);
+
 
     return (
         <MotionBox
@@ -21,16 +46,29 @@ export const Description = () => {
             transition={{duration: 0.6, ease: "easeOut"}}
         >
             <Container maxW={"container.xl"} className={'container-fluid background'}>
+
                 <Box
                     flexDirection={{base: "column", sm: "row-reverse"}}
                     display="flex !important"
                     alignItems="center"
                     justifyContent="space-around"
-                    height="400px"
+                    height="600px"
                     mx="auto"
                     my={'100px'}
-
+                    bg="linear-gradient(132deg, #FC415A, #FFDEE9, #B5FFFC)"
+                    backgroundSize="400% 400%"
+                    animation="Gradient 15s ease infinite"
+                    position="relative"
+                    overflow="hidden"
+                    p={'40px'}
+                    borderRadius={'20px'}
                 >
+                    <Box  className="cube"/>
+                    <Box className="cube"/>
+                    <Box className="cube"/>
+                    <Box className="cube"/>
+                    <Box className="cube"/>
+                    <Box className="cube"/>
                     <Flex
                         flexDirection="column"
                         justifyContent="space-between"
@@ -38,10 +76,12 @@ export const Description = () => {
                         w={{base: "100%", md: "100%"}}
                         h={'100%'}
                     >
+
+
                         <Flex>
                             <Text color={'brand.header'} lineHeight={'1.2'} fontWeight={400}
                                   fontSize={{base: "30px", md: "54px"}}>
-                                Идеальные сайты<br/>для вашего бизнеса
+                                Идеальные сайты<br/>для вашего бизнеса kju
                             </Text>
                         </Flex>
                         <Flex justifyContent={'space-between'} alignItems={'center'} w={'100%'}>
@@ -65,15 +105,14 @@ export const Description = () => {
                             <Box mr={'60px'}>
                             <MotionButton
 
-                                borderRadius="100px"
                                 fontSize="18px"
                                 fontWeight={600}
-                                bg="brand.main"
-                                _hover={{bgColor: "brand.main"}}
-                                whileHover={{scale: 1.2}}
                                 color="white"
-                                h={'180px'}
-                                w={'180px'}
+                                height="180px"
+                                width="180px"
+                                variants={buttonVariants}
+                                initial={{ background: "linear-gradient(132deg, #FC415A, #591BC5, #212335)" }}
+                                animate={controls}
                             >
                                 Наша компания
                             </MotionButton>
