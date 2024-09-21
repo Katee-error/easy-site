@@ -62,7 +62,24 @@ export const Description = () => {
                                     лет экспертизы
                                 </Text>
                             </Flex>
+                            <Box mr={'60px'}>
+                            <MotionButton
+
+                                borderRadius="100px"
+                                fontSize="18px"
+                                fontWeight={600}
+                                bg="brand.main"
+                                _hover={{bgColor: "brand.main"}}
+                                whileHover={{scale: 1.2}}
+                                color="white"
+                                h={'180px'}
+                                w={'180px'}
+                            >
+                                Наша компания
+                            </MotionButton>
+                            </Box>
                         </Flex>
+
                     </Flex>
                 </Box>
 
