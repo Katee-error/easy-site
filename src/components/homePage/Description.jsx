@@ -81,7 +81,7 @@ export const Description = () => {
                         <Flex>
                             <Text color={'brand.header'} lineHeight={'1.2'} fontWeight={400}
                                   fontSize={{base: "30px", md: "54px"}}>
-                                Идеальные сайты<br/>для вашего бизнеса kju
+                                Идеальные сайты<br/>для вашего бизнеса kjuxdfghjklkjhgfdsdfghjkl
                             </Text>
                         </Flex>
                         <Flex justifyContent={'space-between'} alignItems={'center'} w={'100%'}>
